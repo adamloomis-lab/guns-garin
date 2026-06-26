@@ -1,0 +1,14 @@
+{
+  "name": "Guns Garin Memorial Foundation",
+  "short_name": "Guns Garin",
+  "description": "Serving veterans & future aviators. Fast, direct relief for military families in crisis.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#081b38",
+  "theme_color": "#081b38",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
