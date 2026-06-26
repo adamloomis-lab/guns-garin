@@ -1,0 +1,296 @@
+@import 'tailwindcss';
+
+/* ----------------------------------------------------------------------------
+   Guns Garin Memorial Foundation — design system
+   Dignified veterans/aviation nonprofit. Deep navy of trust + brass-gold honor
+   accent + clean light surfaces. Condensed display (Oswald) for a strong,
+   placard-like military/aviation voice; Inter for readable body copy.
+---------------------------------------------------------------------------- */
+
+@theme {
+  /* Surfaces */
+  --color-canvas: #f4f5f7;
+  --color-surface: #ffffff;
+  --color-surface-soft: #eef1f5;
+  --color-ink: #14202f;
+  --color-ink-soft: #3c4858;
+  --color-muted: #5f6b7a; /* darkened from #6b7686 to reach 4.5:1 on canvas */
+  --color-line: #e1e5ec;
+
+  /* Brand */
+  --color-brand: #0e2a52;
+  --color-brand-bright: #1c4f9c;
+  --color-brand-ink: #081b38;
+  --color-gold: #c0902f;
+  --color-gold-soft: #e3b85a;
+  --color-honor: #9b2335;
+  --color-success: #2f8f55;
+
+  /* Type */
+  --font-display: 'Oswald', 'Arial Narrow', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Shadows */
+  --shadow-card: 0 1px 2px rgba(8, 27, 56, 0.05), 0 14px 30px -14px rgba(8, 27, 56, 0.22);
+  --shadow-lift: 0 22px 56px -22px rgba(8, 27, 56, 0.42);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-canvas);
+  background-image: linear-gradient(180deg, #fafbfc 0%, var(--color-canvas) 38%, #e9edf2 100%);
+  background-attachment: fixed;
+  color: var(--color-ink-soft);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: #1a1303;
+}
+
+/* ---- Subtle depth backgrounds (plain classes so they replace flat fills) ---- */
+.depth-brand {
+  background-color: var(--color-brand);
+  background-image:
+    radial-gradient(125% 95% at 50% -12%, rgba(255, 255, 255, 0.13), transparent 60%),
+    radial-gradient(85% 120% at 100% 0%, rgba(227, 184, 90, 0.12), transparent 55%);
+}
+.depth-ink {
+  background-color: var(--color-brand-ink);
+  background-image:
+    radial-gradient(120% 100% at 50% -10%, rgba(28, 79, 156, 0.4), transparent 62%),
+    radial-gradient(80% 120% at 0% 100%, rgba(227, 184, 90, 0.08), transparent 55%);
+}
+.depth-soft {
+  background-color: var(--color-surface-soft);
+  background-image: linear-gradient(180deg, #ffffff 0%, var(--color-surface-soft) 52%, #e6ebf1 100%);
+}
+
+@layer components {
+/* ---- Layout helpers ---- */
+.container-x {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 768px) {
+  .container-x {
+    padding-inline: 2rem;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* ---- Eyebrow label ---- */
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #8a6520; /* darkened gold — was var(--color-gold) #c0902f which failed 4.5:1 on light bg; #8a6520 ≈4.6:1 */
+}
+
+/* ---- Gold divider rule ---- */
+.gold-rule {
+  display: block;
+  height: 3px;
+  width: 3.5rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-soft));
+}
+
+/* ---- Headline display sizing ---- */
+.h-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  font-size: clamp(2.6rem, 6.5vw, 4.25rem);
+}
+.h-section {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  font-size: clamp(2rem, 4.2vw, 3rem);
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 0.95rem 1.7rem;
+  border-radius: 6px;
+  transition: all 0.18s ease;
+  cursor: pointer;
+}
+.btn:active {
+  transform: scale(0.985);
+}
+.btn-gold {
+  background: var(--color-gold);
+  color: #1a1303;
+  box-shadow: 0 10px 26px -10px rgba(192, 144, 47, 0.7);
+}
+.btn-gold:hover {
+  background: var(--color-gold-soft);
+}
+.btn-primary {
+  background: var(--color-brand);
+  color: #fff;
+  box-shadow: 0 10px 26px -10px rgba(14, 42, 82, 0.6);
+}
+.btn-primary:hover {
+  background: var(--color-brand-bright);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-line);
+}
+.btn-outline:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+}
+.btn-ghost-light {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+.btn-ghost-light:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+}
+
+/* ---- Legal page typography ---- */
+.legal-body h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 1.3rem;
+  color: var(--color-ink);
+  margin-top: 1.5rem;
+}
+.legal-body a {
+  color: var(--color-brand-bright);
+  text-decoration: underline;
+}
+.legal-body ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+.legal-body li {
+  margin-top: 0.35rem;
+}
+}
+
+/* ---- Scroll reveal ---- */
+.reveal-ready .reveal,
+.reveal-ready .reveal-left,
+.reveal-ready .reveal-right,
+.reveal-ready .reveal-scale,
+.reveal-ready .reveal-group > * {
+  opacity: 0;
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-ready .reveal,
+.reveal-ready .reveal-group > * {
+  transform: translateY(26px);
+}
+.reveal-ready .reveal-left {
+  transform: translateX(-36px);
+}
+.reveal-ready .reveal-right {
+  transform: translateX(36px);
+}
+.reveal-ready .reveal-scale {
+  transform: scale(0.93);
+}
+.reveal-ready .reveal-group > * {
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.reveal-ready .reveal.is-visible,
+.reveal-ready .reveal-left.is-visible,
+.reveal-ready .reveal-right.is-visible,
+.reveal-ready .reveal-scale.is-visible,
+.reveal-ready .reveal-group.is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Parallax ---- */
+[data-parallax] {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal-ready .reveal,
+  .reveal-ready .reveal-left,
+  .reveal-ready .reveal-right,
+  .reveal-ready .reveal-scale,
+  .reveal-ready .reveal-group > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .lift:hover {
+    transform: none;
+  }
+  [data-parallax] {
+    transform: none !important;
+  }
+}
+
+/* WCAG 2.4.7 keyboard focus */
+*:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
