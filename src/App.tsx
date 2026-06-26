@@ -19,6 +19,7 @@ import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import Accessibility from './pages/Accessibility'
 import NotFound from './pages/NotFound'
+import CookieBanner from './components/CookieBanner'
 
 function Shell() {
   const [location] = useLocation()
@@ -54,6 +55,7 @@ function Shell() {
       </main>
       <Footer />
       <DonateBar />
+      <CookieBanner />
     </>
   )
 }
