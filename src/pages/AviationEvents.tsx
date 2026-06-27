@@ -32,7 +32,7 @@ export default function AviationEvents() {
       <section className="py-20 md:py-24">
         <div className="container-x mx-auto max-w-3xl text-center reveal">
           <span className="eyebrow">Fly-Ins</span>
-          <h2 className="h-section mt-3">More than airplanes — it’s about people</h2>
+          <h2 className="h-section mt-3">More than airplanes. It’s about people</h2>
           <span className="gold-rule mx-auto mt-5" />
           <p className="mt-6 text-lg text-ink-soft">
             These gatherings are not formal fundraisers or large-scale events. They are opportunities
@@ -75,7 +75,7 @@ export default function AviationEvents() {
             ))}
           </div>
           <p className="mx-auto mt-12 max-w-3xl text-center text-lg font-medium text-brand reveal">
-            Most importantly, these events remind us that aviation is about more than airplanes — it
+            Most importantly, these events remind us that aviation is about more than airplanes. It
             is about people.
           </p>
         </div>
@@ -102,7 +102,7 @@ export default function AviationEvents() {
               preserve its future.
             </p>
             <p className="mt-4 font-display text-xl font-semibold uppercase tracking-wide text-ink">
-              Whether you arrive by air or by car — everyone is welcome.
+              Whether you arrive by air or by car, everyone is welcome.
             </p>
           </div>
         </div>
@@ -156,7 +156,7 @@ export default function AviationEvents() {
             <h2 className="h-section mt-3">Shiflet Fly-In 2026</h2>
             <span className="gold-rule mx-auto mt-5" />
             <p className="mt-6 text-lg text-ink-soft">
-              A day of aviation, community, and fun — hosted by the Carolina Aviators Network and
+              A day of aviation, community, and fun, hosted by the Carolina Aviators Network and
               the Guns Garin Memorial Foundation.
             </p>
           </div>
@@ -165,7 +165,7 @@ export default function AviationEvents() {
           <div className="mx-auto mt-12 max-w-2xl reveal-scale">
             <img
               src="/images/shiflet-fly-in-flyer.webp"
-              alt="Shiflet Fly-In 2026 flyer — hosted by Carolina Aviators Network and Guns Garin Memorial Foundation"
+              alt="Shiflet Fly-In 2026 flyer, hosted by Carolina Aviators Network and Guns Garin Memorial Foundation"
               className="mx-auto w-full rounded-2xl border border-line shadow-[var(--shadow-lift)]"
               loading="lazy"
             />
@@ -294,7 +294,7 @@ export default function AviationEvents() {
         <div className="container-x reveal">
           <h2 className="h-section text-white">Support the mission that fuels these moments</h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-white/85">
-            Every gift to the Guns Garin Memorial Foundation keeps us standing with our veterans —
+            Every gift to the Guns Garin Memorial Foundation keeps us standing with our veterans,
             and keeps the aviation community we love thriving.
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-4">

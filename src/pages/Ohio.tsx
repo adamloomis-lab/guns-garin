@@ -108,7 +108,7 @@ export default function Ohio() {
           <span className="gold-rule mx-auto mt-5" />
           <p className="mt-6 text-lg text-ink-soft">
             Join us for the first-ever Ohio Golf Tournament benefiting the Guns Garin Memorial
-            Foundation. This is more than a day on the course — it is a direct investment in veterans
+            Foundation. This is more than a day on the course. It is a direct investment in veterans
             and military families facing urgent financial hardship.
           </p>
           <p className="mt-4 text-xl font-semibold text-brand">
@@ -198,7 +198,7 @@ export default function Ohio() {
               </p>
             </blockquote>
             <p className="font-display mt-5 font-semibold uppercase tracking-wide text-ink">
-              Michael Thompson <span className="text-muted">— PGA Tour Professional</span>
+              Michael Thompson <span className="text-muted">PGA Tour Professional</span>
             </p>
             <div className="mt-6 rounded-xl border border-line bg-surface-soft p-5">
               <p className="text-sm font-semibold uppercase tracking-wide text-ink">

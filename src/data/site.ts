@@ -53,7 +53,7 @@ export const programs = [
     id: 'veteran-relief',
     title: 'Veteran Family Relief',
     summary:
-      'Fast, direct financial relief for military families facing crisis — rent, utilities, food, travel, and emergencies that can’t wait.',
+      'Fast, direct financial relief for military families facing crisis: rent, utilities, food, travel, and emergencies that can’t wait.',
     body: 'When a military family hits a wall, hours matter. Our relief program responds in under 24 hours on average, putting real help directly where it’s needed. Since 2020 we’ve stood with more than 350 veteran families, and 100% of donations go straight to the veterans we serve.',
     points: [
       'Emergency monetary relief, typically within 24 hours',
@@ -66,7 +66,7 @@ export const programs = [
     title: 'Inspiring Future Aviators',
     summary:
       'Free, premium aviation education for the next generation of pilots through our partnership with E3 Aviation.',
-    body: 'Major Garin loved the sky, and we keep that love alive by opening the cockpit to young people who dream of flying. Our partnership with E3 Aviation provides premium aviation educational content — completely free — to young men and women pursuing a career in aviation.',
+    body: 'Major Garin loved the sky, and we keep that love alive by opening the cockpit to young people who dream of flying. Our partnership with E3 Aviation provides premium aviation educational content, completely free, to young men and women pursuing a career in aviation.',
     points: [
       'Premium aviation curriculum, free of charge',
       'Powered by our E3 Aviation partnership',
@@ -78,7 +78,7 @@ export const programs = [
     title: 'Mental Health Support',
     summary:
       'Connecting veterans and their families with care for PTSD, depression, anxiety, and the invisible wounds of service.',
-    body: 'No veteran should fight alone — on the battlefield or at home. Our mental health initiative helps connect service members and their families to in-person and group therapy support for PTSD, depression, anxiety, and related challenges.',
+    body: 'No veteran should fight alone, on the battlefield or at home. Our mental health initiative helps connect service members and their families to in-person and group therapy support for PTSD, depression, anxiety, and related challenges.',
     points: [
       'Support for PTSD, depression & anxiety',
       'In-person and group therapy connections',
@@ -112,7 +112,7 @@ export const impactAreas = [
   },
   {
     title: 'A community that shows up',
-    body: 'Donors, partners, and volunteers who answer the call — fast — when a veteran family needs them.',
+    body: 'Donors, partners, and volunteers who answer the call, fast, when a veteran family needs them.',
   },
 ] as const
 
@@ -169,7 +169,7 @@ export const faqs = [
   },
   {
     q: 'What is the Flight Crew?',
-    a: 'Flight Crew is our monthly donor program. A recurring gift empowers you to help those who protect us all — ensuring no veteran is left behind on the battlefield or at home.',
+    a: 'Flight Crew is our monthly donor program. A recurring gift empowers you to help those who protect us all, ensuring no veteran is left behind on the battlefield or at home.',
   },
   {
     q: 'How does the foundation support future pilots?',

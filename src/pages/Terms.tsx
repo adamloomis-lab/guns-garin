@@ -20,13 +20,13 @@ export default function Terms() {
       <p>
         Donations made through this site are processed by GiveButter. The {org.name} is a registered
         501(c)(3) nonprofit organization; donations may be tax-deductible to the extent allowed by
-        law. Donations are generally non-refundable — if you believe an error was made, please
+        law. Donations are generally non-refundable. If you believe an error was made, please
         contact us.
       </p>
 
       <h2>Intellectual Property</h2>
       <p>
-        All content on this site — including text, logos, and images — is the property of the{' '}
+        All content on this site, including text, logos, and images, is the property of the{' '}
         {org.name} or its partners and may not be reproduced without permission.
       </p>
 

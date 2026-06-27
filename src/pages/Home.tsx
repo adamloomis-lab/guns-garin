@@ -34,11 +34,11 @@ export default function Home() {
               {org.tagline}
             </span>
             <h1 className="h-display mt-4 text-white">
-              No veteran left behind — on the battlefield or at home.
+              No veteran left behind, on the battlefield or at home.
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-white/85">
               The Guns Garin Memorial Foundation delivers fast, direct relief to military families in
-              crisis and inspires the next generation of aviators — honoring the legacy of Major
+              crisis and inspires the next generation of aviators, honoring the legacy of Major
               Richard “GUNS” Garin.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
@@ -83,12 +83,12 @@ export default function Home() {
               <p className="mt-4 text-ink-soft">
                 A pilot at heart, he carried a deep love of country and an even deeper love for the
                 people around him. The Guns Garin Memorial Foundation was founded in 2020 to preserve
-                his legacy — standing beside the military families he cared so much about, and
+                his legacy, standing beside the military families he cared so much about, and
                 inspiring the next generation of aviators to chase the sky the way he did.
               </p>
               <p className="mt-4 text-ink-soft">
-                Every family we help and every young pilot we encourage carries his name — and his
-                spirit of service — forward.
+                Every family we help and every young pilot we encourage carries his name, and his
+                spirit of service, forward.
               </p>
               <Link href="/about" className="btn btn-outline mt-7">
                 Read His Story <ArrowRight size={18} />
@@ -126,7 +126,7 @@ export default function Home() {
             <p className="mt-4 text-ink-soft">
               When a military family faces crisis, we respond in under 24 hours with real, direct
               help. And through our partnership with E3 Aviation, we open the door to a career in
-              aviation — providing premium educational content, completely free, to future pilots.
+              aviation, providing premium educational content, completely free, to future pilots.
             </p>
             <Link href="/impact" className="btn btn-outline mt-8">
               See Our Impact <ArrowRight size={18} />
@@ -159,7 +159,7 @@ export default function Home() {
             <h2 className="h-section mt-3">How we serve</h2>
             <span className="gold-rule mx-auto mt-5" />
             <p className="mt-6 text-lg text-ink-soft">
-              Three promises we keep — to the families who served, and to those who dream of flying.
+              Three promises we keep: to the families who served, and to those who dream of flying.
             </p>
           </div>
           <div className="mt-16 grid gap-7 md:grid-cols-3 reveal-group">

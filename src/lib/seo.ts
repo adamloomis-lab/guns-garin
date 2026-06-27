@@ -181,7 +181,7 @@ export function getPageMeta(rawPath: string): PageMeta {
       return {
         title: 'Annual Golf Tournament | Play for a Purpose | Guns Garin Memorial Foundation',
         description:
-          'Join the 2026 Guns Garin Memorial Foundation Golf Series. The Ohio tournament tees off July 13, 2026 — multiple tournaments, one mission: supporting veterans in crisis.',
+          'Join the 2026 Guns Garin Memorial Foundation Golf Series. The Ohio tournament tees off July 13, 2026. Multiple tournaments, one mission: supporting veterans in crisis.',
         canonical: pageUrl('/golf-tournament'),
         ogImage,
         jsonLd: [
@@ -194,7 +194,7 @@ export function getPageMeta(rawPath: string): PageMeta {
       return {
         title: '2026 Ohio GGMF Golf Tournament | Play with PGA Pro Michael Thompson',
         description:
-          'Join the first-ever Ohio GGMF Golf Tournament — Monday, July 13, 2026 at Turkeyfoot Lake Golf Links, Akron. Hosted by PGA Tour Pro Michael Thompson. $175/golfer, $700/foursome, sponsorships available. 97¢ of every dollar goes to veterans.',
+          'Join the first-ever Ohio GGMF Golf Tournament. Monday, July 13, 2026 at Turkeyfoot Lake Golf Links, Akron. Hosted by PGA Tour Pro Michael Thompson. $175/golfer, $700/foursome, sponsorships available. 97¢ of every dollar goes to veterans.',
         canonical: pageUrl('/ohio'),
         ogImage,
         jsonLd: [
@@ -211,7 +211,7 @@ export function getPageMeta(rawPath: string): PageMeta {
       return {
         title: 'Aviation Events & Fly-Ins | Guns Garin Memorial Foundation',
         description:
-          'Throughout the year, the Guns Garin Memorial Foundation hosts and supports aviation fly-ins in partnership with the Carolina Aviators Network — bringing pilots, veterans, students, and families together around a shared passion for flight.',
+          'Throughout the year, the Guns Garin Memorial Foundation hosts and supports aviation fly-ins in partnership with the Carolina Aviators Network, bringing pilots, veterans, students, and families together around a shared passion for flight.',
         canonical: pageUrl('/aviation-events'),
         ogImage,
         jsonLd: [
@@ -226,7 +226,7 @@ export function getPageMeta(rawPath: string): PageMeta {
       return {
         title: 'Join the Flight Crew | Monthly Giving | Guns Garin Memorial Foundation',
         description:
-          'Flight Crew is our monthly donor program. A recurring gift ensures no veteran is left behind — on the battlefield or at home. Become a member today.',
+          'Flight Crew is our monthly donor program. A recurring gift ensures no veteran is left behind, on the battlefield or at home. Become a member today.',
         canonical: pageUrl('/flight-crew'),
         ogImage,
         jsonLd: [

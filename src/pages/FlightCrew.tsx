@@ -9,7 +9,7 @@ const benefits = [
   {
     icon: Repeat,
     title: 'Steady, reliable support',
-    body: 'Recurring gifts let us say “yes” the moment a family needs us — no waiting, no red tape.',
+    body: 'Recurring gifts let us say “yes” the moment a family needs us. No waiting, no red tape.',
   },
   {
     icon: ShieldCheck,
@@ -19,7 +19,7 @@ const benefits = [
   {
     icon: Plane,
     title: 'Honor a legacy',
-    body: 'You keep Major Garin’s mission flying — caring for military families and future aviators.',
+    body: 'You keep Major Garin’s mission flying, caring for military families and future aviators.',
   },
 ]
 
@@ -29,7 +29,7 @@ export default function FlightCrew() {
       <PageHero
         eyebrow="Monthly Giving"
         title="Join the Flight Crew"
-        intro="And ensure no veteran is left behind — on the battlefield or at home. Flight Crew is our monthly donor program that empowers you to help those who protect us all."
+        intro="And ensure no veteran is left behind, on the battlefield or at home. Flight Crew is our monthly donor program that empowers you to help those who protect us all."
         image="/images/cockpit-poster.webp"
       />
 

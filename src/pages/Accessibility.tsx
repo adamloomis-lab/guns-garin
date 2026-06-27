@@ -7,7 +7,7 @@ export default function Accessibility() {
       <h2>Our commitment</h2>
       <p>
         The {org.name} website is built to conform to the Web Content Accessibility Guidelines
-        (WCAG) 2.1 Level AA — the standard referenced by the ADA for web accessibility. We review
+        (WCAG) 2.1 Level AA, the standard referenced by the ADA for web accessibility. We review
         and update our accessibility practices on an ongoing basis.
       </p>
 
@@ -21,7 +21,7 @@ export default function Accessibility() {
         </li>
         <li>
           <strong>Focus indicators:</strong> A visible outline appears on every interactive element
-          — links, buttons, and form fields — when navigated by keyboard.
+ (links, buttons, and form fields) when navigated by keyboard.
         </li>
         <li>
           <strong>Color contrast:</strong> Text colors meet the 4.5:1 minimum contrast ratio
@@ -41,7 +41,7 @@ export default function Accessibility() {
       <p>
         If you encounter any accessibility barrier on this site, please{' '}
         <a href="/contact">contact us</a> and we will address it promptly. Your feedback helps us
-        ensure every visitor — and every veteran family — can access the support and information
+        ensure every visitor, and every veteran family, can access the support and information
         they need.
       </p>
     </LegalPage>

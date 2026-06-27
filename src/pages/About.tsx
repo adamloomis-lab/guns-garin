@@ -27,7 +27,7 @@ const aboutPrograms = [
   {
     icon: Plane,
     title: 'Aviation Education',
-    body: 'Our partnership with E3 Aviation lets us educate and empower future aviators by providing exclusive access to thousands of hours of premium aviation educational content — completely free for students.',
+    body: 'Our partnership with E3 Aviation lets us educate and empower future aviators by providing exclusive access to thousands of hours of premium aviation educational content, completely free for students.',
     cta: null,
   },
   {
@@ -39,7 +39,7 @@ const aboutPrograms = [
   {
     icon: HeartPulse,
     title: 'Veteran Mental Health Initiative',
-    body: '1 in 3 veterans is actively dealing with a known mental health issue — including PTSD, depression, anxiety, substance abuse, and TBI. GGMF is committed to helping provide in-person and group therapy for veterans who need it.',
+    body: '1 in 3 veterans is actively dealing with a known mental health issue, including PTSD, depression, anxiety, substance abuse, and TBI. GGMF is committed to helping provide in-person and group therapy for veterans who need it.',
     cta: null,
   },
 ]
@@ -68,7 +68,7 @@ export default function About() {
       <PageHero
         eyebrow="About the Foundation"
         title="Our mission & the man behind it"
-        intro="We exist to support local military families during times of hardship, and to inspire the next generation to explore a career in aviation — honoring the life and legacy of Major Rick “GUNS” Garin."
+        intro="We exist to support local military families during times of hardship, and to inspire the next generation to explore a career in aviation, honoring the life and legacy of Major Rick “GUNS” Garin."
         video="/videos/cockpit.mp4"
         poster="/images/cockpit-poster.webp"
       />
@@ -80,7 +80,7 @@ export default function About() {
           <h2 className="h-section mt-3">A twofold mission</h2>
           <span className="gold-rule mx-auto mt-5" />
           <p className="mt-6 text-lg text-ink-soft">
-            First, we stand with local military families during times of hardship — mobilizing fast,
+            First, we stand with local military families during times of hardship, mobilizing fast,
             direct relief when they need it most. Second, we educate and encourage young people to
             explore a career in aviation, opening the cockpit through free, premium educational
             content with our partner E3 Aviation.
@@ -248,7 +248,7 @@ export default function About() {
             <span className="gold-rule mt-5" />
             <p className="mt-6 text-ink-soft">
               We are deeply grateful to Michael Thompson for his generous support of our foundation.
-              Michael is an 11-year veteran member of the PGA Tour — winner of the 2020 3M Open and
+              Michael is an 11-year veteran member of the PGA Tour, winner of the 2020 3M Open and
               the 2013 Honda Classic, and runner-up at the 2012 U.S. Open.
             </p>
             <p className="mt-4 text-ink-soft">
@@ -278,7 +278,7 @@ export default function About() {
         <div className="container-x reveal">
           <h2 className="h-section text-white">Help us carry the legacy forward</h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-white/85">
-            Your gift puts real help in the hands of military families — and keeps the dream of
+            Your gift puts real help in the hands of military families, and keeps the dream of
             flight within reach for the next generation.
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-4">

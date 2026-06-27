@@ -21,7 +21,7 @@ export default function Impact() {
       <PageHero
         eyebrow="Our Impact"
         title="Real help, delivered fast"
-        intro="Thanks to our donors and partners, the Guns Garin Memorial Foundation has supported veteran families and inspired future pilots since 2020 — and we’re just getting started."
+        intro="Thanks to our donors and partners, the Guns Garin Memorial Foundation has supported veteran families and inspired future pilots since 2020. And we’re just getting started."
         video="/videos/flag-trees.mp4"
         poster="/images/flag-trees-poster.webp"
       />
@@ -48,7 +48,7 @@ export default function Impact() {
           <span className="gold-rule mx-auto mt-5" />
           <p className="mt-6 text-lg text-ink-soft">
             To date, we have had the honor of supporting over 350 veterans and their families in
-            their time of need — and we remain committed to inspiring the next generation of amazing
+            their time of need, and we remain committed to inspiring the next generation of amazing
             pilots. Our partnership with E3 Aviation lets us provide premium educational content to
             young men and women pursuing a career in aviation, completely free.
           </p>
@@ -64,7 +64,7 @@ export default function Impact() {
             <span className="gold-rule mx-auto mt-5" />
             <p className="mt-6 text-lg text-white/85">
               Our partnership with E3 Aviation lets us provide premium educational content to young
-              men and women pursuing a career in aviation — completely free.
+              men and women pursuing a career in aviation, completely free.
             </p>
             <img
               src="/images/e3-partnership-banner.webp"
@@ -145,7 +145,7 @@ export default function Impact() {
         <div className="container-x reveal">
           <h2 className="h-section text-white">Be part of the next 350</h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-white/85">
-            Every gift becomes direct help for a military family — and hope for a future aviator.
+            Every gift becomes direct help for a military family, and hope for a future aviator.
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-4">
             <Link href="/donate" className="btn btn-gold">

@@ -11,8 +11,8 @@ export default function Privacy() {
 
       <h2>Information We Collect</h2>
       <p>
-        We collect information you voluntarily provide — such as your name, email address, phone
-        number, and message — when you submit our contact form. Our website may also collect standard
+        We collect information you voluntarily provide (such as your name, email address, phone
+        number, and message) when you submit our contact form. Our website may also collect standard
         technical information (such as browser type and pages visited) through cookies and analytics.
       </p>
 

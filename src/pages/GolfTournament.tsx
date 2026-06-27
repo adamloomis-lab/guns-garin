@@ -38,7 +38,7 @@ export default function GolfTournament() {
             </h2>
             <p className="mt-6 max-w-xl text-lg text-white/85">
               Every Guns Garin tournament is personally hosted by PGA Tour winner Michael Thompson.
-              Play a round alongside a pro — and put every dollar to work funding fast, direct relief
+              Play a round alongside a pro, and put every dollar to work funding fast, direct relief
               for veteran families in crisis.
             </p>
             <ul className="mt-7 flex flex-wrap gap-3">
@@ -132,8 +132,8 @@ export default function GolfTournament() {
             Interested in sponsoring a tournament?{' '}
             <a className="font-medium text-brand-bright underline" href="/contact">
               Get in touch
-            </a>{' '}
-            — sponsorships directly fund veteran relief.
+            </a>
+            {'. '}Sponsorships directly fund veteran relief.
           </p>
         </div>
       </section>
@@ -146,7 +146,7 @@ export default function GolfTournament() {
             <h2 className="h-section mt-3">Tournament highlights</h2>
             <span className="gold-rule mx-auto mt-5" />
             <p className="mt-6 text-lg text-ink-soft">
-              Hundreds of supporters, a PGA Tour pro, and one mission — a day that turns birdies into
+              Hundreds of supporters, a PGA Tour pro, and one mission: a day that turns birdies into
               real relief for veteran families.
             </p>
           </div>
