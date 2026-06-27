@@ -36,6 +36,7 @@ export default function Navbar() {
   }, [open])
 
   return (
+    <>
     <header
       className={`sticky top-0 z-50 bg-surface/95 backdrop-blur transition-shadow ${
         scrolled ? 'shadow-[0_4px_20px_-12px_rgba(8,27,56,0.45)]' : ''
@@ -84,8 +85,11 @@ export default function Navbar() {
           <Menu size={22} />
         </button>
       </nav>
+    </header>
 
-      {/* Full-screen slide-in mobile menu */}
+      {/* Full-screen slide-in mobile menu (sibling of <header> so backdrop-blur
+          on the header does not become the containing block and clamp this
+          fixed overlay to the header's height). */}
       <div
         className={`fixed inset-0 z-[60] lg:hidden ${open ? '' : 'pointer-events-none'}`}
         aria-hidden={!open}
@@ -145,8 +149,8 @@ export default function Navbar() {
                     href={l.href}
                     onClick={() => setOpen(false)}
                     style={{ transitionDelay: open ? `${80 + i * 45}ms` : '0ms' }}
-                    className={`group flex items-center justify-between border-b border-white/10 py-3.5 transition-all duration-300 ${
-                      open ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'
+                    className={`group flex items-center justify-between border-b border-white/10 py-3.5 transition-transform duration-300 ${
+                      open ? 'translate-x-0' : 'translate-x-4'
                     }`}
                   >
                     <span
@@ -219,6 +223,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </header>
+    </>
   )
 }
