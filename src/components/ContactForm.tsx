@@ -1,23 +1,40 @@
 import { useState } from 'react'
-import { Send, CheckCircle2 } from 'lucide-react'
+import { Send, HelpCircle, Heart, Users, Plane, MessageCircle } from 'lucide-react'
+import { FloatField, IconCardSelect, SuccessCheck, type IconCardOption } from './FluidField'
+import { org } from '../data/site'
 
-// Netlify Forms. A matching hidden static <form name="contact"> lives in
-// index.html so Netlify's build-time bot detects it; this live form submits the
-// same fields via an AJAX POST so we can show an inline success state without a
-// full-page redirect.
+// Netlify Forms. The form is prerendered into static HTML (SSG), so Netlify's
+// build-time bot detects it; this live form submits the same fields via an AJAX
+// POST so we can show an inline success state without a full-page redirect.
 const encode = (data: Record<string, string>) =>
   Object.keys(data)
     .map((k) => `${encodeURIComponent(k)}=${encodeURIComponent(data[k])}`)
     .join('&')
 
+const reasonOptions: readonly IconCardOption[] = [
+  { value: 'General question', label: 'General question', Icon: HelpCircle },
+  { value: 'Donate / Support', label: 'Donate / Support', Icon: Heart },
+  { value: 'Volunteer', label: 'Volunteer', Icon: Users },
+  { value: 'Aviation education', label: 'Aviation education', Icon: Plane },
+  { value: 'Something else', label: 'Something else', Icon: MessageCircle },
+]
+
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [firstName, setFirstName] = useState('')
+  const [reason, setReason] = useState('General question')
+  const [fields, setFields] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
+
+  const onField = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setFields((f) => ({ ...f, [e.target.name]: e.target.value }))
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.currentTarget
     const data = Object.fromEntries(new FormData(form) as unknown as Iterable<[string, string]>)
     if (data['bot-field']) return // honeypot tripped
+    // Capture the first name before we reset so the thank-you can stay personal.
+    setFirstName((fields.name || '').trim().split(/\s+/)[0] || '')
     setStatus('sending')
     try {
       await fetch('/', {
@@ -27,6 +44,8 @@ export default function ContactForm() {
       })
       setStatus('sent')
       form.reset()
+      setFields({ name: '', email: '', phone: '', subject: '', message: '' })
+      setReason('General question')
     } catch {
       setStatus('error')
     }
@@ -34,14 +53,25 @@ export default function ContactForm() {
 
   if (status === 'sent') {
     return (
-      <div className="card p-8 text-center">
-        <CheckCircle2 className="mx-auto text-[var(--color-success)]" size={44} />
-        <h3 className="font-display mt-4 text-2xl font-semibold uppercase tracking-wide text-ink">
-          Message received
+      <div className="card gg-rise p-8 text-center sm:p-10">
+        <div className="mx-auto flex justify-center">
+          <SuccessCheck />
+        </div>
+        <h3 className="font-display mt-5 text-3xl font-semibold uppercase tracking-wide text-ink">
+          {firstName ? `Thank You, ${firstName}!` : 'Thank You!'}
         </h3>
-        <p className="mt-2 text-ink-soft">
-          Thank you for reaching out. We’ll get back to you as soon as we can.
+        <p className="mx-auto mt-3 max-w-md text-ink-soft">
+          Your message reached the Guns Garin Memorial Foundation. We read every note personally and
+          will be in touch as soon as we can. Thank you for standing with our veterans.
         </p>
+        <a
+          href={org.give.donate}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-gold mt-7"
+        >
+          <Heart size={18} /> Support a Veteran Today
+        </a>
       </div>
     )
   }
@@ -56,67 +86,48 @@ export default function ContactForm() {
       className="card p-6 sm:p-8"
     >
       <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="reason" value={reason} />
       <p hidden>
         <label>
           Don’t fill this out: <input name="bot-field" />
         </label>
       </p>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <label className="block">
-          <span className="font-display text-sm font-medium uppercase tracking-wide text-ink">Name</span>
-          <input
-            type="text"
-            name="name"
-            required
-            autoComplete="name"
-            className="mt-1.5 w-full rounded-md border border-line bg-white px-4 py-3 text-ink outline-none transition-colors focus:border-brand"
-          />
-        </label>
-        <label className="block">
-          <span className="font-display text-sm font-medium uppercase tracking-wide text-ink">Email</span>
-          <input
-            type="email"
-            name="email"
-            required
-            autoComplete="email"
-            className="mt-1.5 w-full rounded-md border border-line bg-white px-4 py-3 text-ink outline-none transition-colors focus:border-brand"
-          />
-        </label>
+      <fieldset className="border-0 p-0">
+        <legend className="font-display text-sm font-medium uppercase tracking-wide text-ink">
+          How can we help?
+        </legend>
+        <div className="mt-3">
+          <IconCardSelect options={reasonOptions} selected={reason} onSelect={setReason} />
+        </div>
+      </fieldset>
+
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <FloatField name="name" label="Name" value={fields.name} onChange={onField} required autoComplete="name" />
+        <FloatField name="email" label="Email" type="email" value={fields.email} onChange={onField} required autoComplete="email" />
       </div>
 
-      <label className="mt-5 block">
-        <span className="font-display text-sm font-medium uppercase tracking-wide text-ink">
-          Phone <span className="text-muted normal-case">(optional)</span>
-        </span>
-        <input
-          type="tel"
-          name="phone"
-          autoComplete="tel"
-          className="mt-1.5 w-full rounded-md border border-line bg-white px-4 py-3 text-ink outline-none transition-colors focus:border-brand"
-        />
-      </label>
+      <div className="mt-4">
+        <FloatField name="phone" label="Phone (optional)" type="tel" value={fields.phone} onChange={onField} autoComplete="tel" />
+      </div>
 
-      <label className="mt-5 block">
-        <span className="font-display text-sm font-medium uppercase tracking-wide text-ink">Subject</span>
-        <input
-          type="text"
-          name="subject"
-          className="mt-1.5 w-full rounded-md border border-line bg-white px-4 py-3 text-ink outline-none transition-colors focus:border-brand"
-        />
-      </label>
+      <div className="mt-4">
+        <FloatField name="subject" label="Subject" value={fields.subject} onChange={onField} />
+      </div>
 
-      <label className="mt-5 block">
-        <span className="font-display text-sm font-medium uppercase tracking-wide text-ink">Message</span>
-        <textarea
-          name="message"
-          required
-          rows={5}
-          className="mt-1.5 w-full rounded-md border border-line bg-white px-4 py-3 text-ink outline-none transition-colors focus:border-brand"
-        />
-      </label>
+      <div className="mt-4">
+        <FloatField name="message" label="Message" value={fields.message} onChange={onField} required textarea rows={5} />
+      </div>
 
-      <button type="submit" disabled={status === 'sending'} className="btn btn-primary mt-6 w-full disabled:opacity-70">
+      <button
+        type="submit"
+        disabled={status === 'sending'}
+        className="btn btn-primary group relative mt-6 w-full overflow-hidden disabled:opacity-70"
+      >
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-white/25 blur-md group-hover:[animation:gg-sheen_0.9s_ease]"
+        />
         <Send size={17} /> {status === 'sending' ? 'Sending…' : 'Send Message'}
       </button>
       {status === 'error' && (

@@ -294,3 +294,43 @@ body {
   outline: 2px solid var(--color-gold);
   outline-offset: 3px;
 }
+
+/* ---- Fluid form + sticky CTA motion ----
+   Container rise, checkmark draw, button sheen, donate glow-pulse, menu slide.
+   All forced off by the prefers-reduced-motion block above. */
+@keyframes gg-rise {
+  0% { opacity: 0; transform: translateY(22px); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes gg-pop {
+  0% { opacity: 0; transform: scale(0.6); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes gg-draw-check {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes gg-sheen {
+  0% { transform: translateX(-130%) skewX(-18deg); }
+  60%, 100% { transform: translateX(260%) skewX(-18deg); }
+}
+@keyframes gg-glow-pulse {
+  0%, 100% { box-shadow: 0 10px 28px -8px rgba(192, 144, 47, 0.6), 0 0 0 0 rgba(192, 144, 47, 0); }
+  50% { box-shadow: 0 16px 38px -6px rgba(192, 144, 47, 0.75), 0 0 22px 2px rgba(192, 144, 47, 0.4); }
+}
+@keyframes gg-pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.7); }
+}
+.gg-glow-pulse {
+  animation: gg-glow-pulse 2.6s ease-in-out infinite;
+}
+.gg-rise {
+  animation: gg-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gg-glow-pulse,
+  .gg-rise {
+    animation: none !important;
+  }
+}

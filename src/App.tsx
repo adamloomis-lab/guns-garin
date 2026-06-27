@@ -3,7 +3,7 @@ import { Route, Switch, Router, useLocation } from 'wouter'
 import Seo from './components/Seo'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import DonateBar from './components/DonateBar'
+import MobileActionBar from './components/MobileActionBar'
 import { useScrollReveal } from './hooks/useScrollReveal'
 import { useParallax } from './hooks/useParallax'
 import Home from './pages/Home'
@@ -54,7 +54,7 @@ function Shell() {
         </Switch>
       </main>
       <Footer />
-      <DonateBar />
+      <MobileActionBar />
       <CookieBanner />
     </>
   )
