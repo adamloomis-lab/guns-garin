@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'wouter'
 import { Heart, Menu, X, Mail, ArrowRight, MapPin, Facebook, Instagram, Youtube } from 'lucide-react'
 import Logo from './Logo'
@@ -19,6 +19,16 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [location] = useLocation()
   const scrolled = useScrolled(20)
+  const panelRef = useRef<HTMLDivElement>(null)
+
+  // Set the panel transform via setProperty with !important so nothing in the
+  // cascade can pin it offscreen (Tailwind v4 + transitions on the `translate`
+  // property had an issue where the panel stuck at translateX(100%)).
+  useEffect(() => {
+    const el = panelRef.current
+    if (!el) return
+    el.style.setProperty('transform', open ? 'translateX(0)' : 'translateX(100%)', 'important')
+  }, [open])
 
   // Scroll lock + Esc to close while the full-screen menu is open.
   useEffect(() => {
@@ -107,12 +117,19 @@ export default function Navbar() {
 
         {/* Right slide-in panel */}
         <div
+          ref={panelRef}
           role="dialog"
           aria-modal="true"
           aria-label="Main menu"
-          className={`depth-brand absolute inset-y-0 right-0 flex w-[88%] max-w-sm flex-col text-white shadow-[0_0_60px_rgba(8,27,56,0.6)] transition-transform duration-300 ease-out ${
-            open ? 'translate-x-0' : 'translate-x-full'
-          }`}
+          className="depth-brand absolute inset-y-0 right-0 flex w-[88%] max-w-sm flex-col text-white shadow-[0_0_60px_rgba(8,27,56,0.6)]"
+          style={{
+            // transform is set via the useEffect above (setProperty + !important)
+            // so it survives any cascade collisions (Tailwind v4 transform/translate
+            // utilities + transitions had a stuck-offscreen bug).
+            transform: 'translateX(100%)', // initial / SSR value
+            transition: 'transform 300ms cubic-bezier(0.22, 1, 0.36, 1)',
+            willChange: 'transform',
+          }}
         >
           <div className="flex items-center justify-between border-b border-white/12 px-6 py-4">
             <Logo className="h-12 w-auto" />
@@ -148,10 +165,11 @@ export default function Navbar() {
                   <Link
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    style={{ transitionDelay: open ? `${80 + i * 45}ms` : '0ms' }}
-                    className={`group flex items-center justify-between border-b border-white/10 py-3.5 transition-transform duration-300 ${
-                      open ? 'translate-x-0' : 'translate-x-4'
-                    }`}
+                    style={{
+                      transform: open ? 'translateX(0)' : 'translateX(1rem)',
+                      transition: `transform 300ms cubic-bezier(0.22, 1, 0.36, 1) ${open ? `${80 + i * 45}ms` : '0ms'}`,
+                    }}
+                    className="group flex items-center justify-between border-b border-white/10 py-3.5"
                   >
                     <span
                       className={`font-display text-2xl font-semibold uppercase tracking-wide transition-colors ${

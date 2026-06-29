@@ -107,8 +107,8 @@ function ohioEventSchema() {
     description:
       'The first-ever Ohio GGMF Golf Tournament, hosted by PGA Tour Pro Michael Thompson, benefiting veterans and military families in crisis.',
     offers: [
-      { '@type': 'Offer', name: 'Individual Golfer', price: '175', priceCurrency: 'USD', url: org.give.golfOhio },
-      { '@type': 'Offer', name: 'Foursome', price: '700', priceCurrency: 'USD', url: org.give.golfOhio },
+      { '@type': 'Offer', name: 'Individual Golfer', price: '120', priceCurrency: 'USD', url: org.give.golfOhio },
+      { '@type': 'Offer', name: 'Foursome', price: '480', priceCurrency: 'USD', url: org.give.golfOhio },
     ],
     performer: { '@type': 'Person', name: 'Michael Thompson' },
     url: pageUrl('/ohio'),
@@ -194,7 +194,7 @@ export function getPageMeta(rawPath: string): PageMeta {
       return {
         title: '2026 Ohio GGMF Golf Tournament | Play with PGA Pro Michael Thompson',
         description:
-          'Join the first-ever Ohio GGMF Golf Tournament. Monday, July 13, 2026 at Turkeyfoot Lake Golf Links, Akron. Hosted by PGA Tour Pro Michael Thompson. $175/golfer, $700/foursome, sponsorships available. 97¢ of every dollar goes to veterans.',
+          'Join the first-ever Ohio GGMF Golf Tournament. Monday, July 13, 2026 at Turkeyfoot Lake Golf Links, Akron. Hosted by PGA Tour Pro Michael Thompson. $120/golfer, $480/foursome, sponsorships available. 97¢ of every dollar goes to veterans.',
         canonical: pageUrl('/ohio'),
         ogImage,
         jsonLd: [

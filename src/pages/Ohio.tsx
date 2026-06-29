@@ -20,8 +20,8 @@ const registrationIncludes = [
 ]
 
 const pricing = [
-  { price: '$175', label: 'Individual Golfer' },
-  { price: '$700', label: 'Foursome', featured: true },
+  { price: '$120', label: 'Individual Golfer' },
+  { price: '$480', label: 'Foursome', featured: true },
 ]
 
 const sponsorships = [
