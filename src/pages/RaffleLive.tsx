@@ -67,6 +67,7 @@ export default function RaffleLive() {
         @media (prefers-reduced-motion: reduce) { .ggl-flash, .ggl-live { animation: none; } }
       `}</style>
 
+      <img src="/images/footerlogo.png" alt="" className="mx-auto mb-4 w-auto" style={{ height: 'clamp(56px,9vw,120px)' }} />
       <div className="text-[clamp(14px,2vw,22px)] font-bold uppercase tracking-[0.3em] text-white/80">
         Guns Garin Memorial Foundation
       </div>

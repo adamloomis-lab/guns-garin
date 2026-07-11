@@ -39,21 +39,21 @@ function winnerEmail({ name, number, potCents, payoutCents }) {
   const first = (name || "").trim().split(/\s+/)[0] || "friend";
   return `<!doctype html><html><body style="margin:0;background:#eef1f5;font-family:'Segoe UI',Helvetica,Arial,sans-serif;color:#14202f;">
   <div style="max-width:600px;margin:0 auto;background:#ffffff;">
-    <div style="background:#0e2a52;padding:26px 28px;text-align:center;border-bottom:4px solid #c0902f;">
-      <div style="color:#ffffff;font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;">Guns Garin Memorial Foundation</div>
-      <div style="color:#e3b85a;font-size:30px;font-weight:900;margin-top:6px;">You Won the 50/50!</div>
+    <div style="background:#16375f;padding:26px 28px;text-align:center;border-bottom:4px solid #2077c8;">
+      <img src="https://gunsgarin.com/images/footerlogo.png" alt="Guns Garin Memorial Foundation" height="56" style="height:56px;display:block;margin:0 auto 10px;" />
+      <div style="color:#7cc0f4;font-size:30px;font-weight:900;">You Won the 50/50!</div>
     </div>
     <div style="padding:32px 28px;">
-      <h1 style="margin:0 0 8px;font-size:24px;color:#0e2a52;">Congratulations, ${esc(first)}!</h1>
+      <h1 style="margin:0 0 8px;font-size:24px;color:#16375f;">Congratulations, ${esc(first)}!</h1>
       <p style="margin:0 0 18px;font-size:16px;line-height:1.6;color:#3c4858;">Your ticket <strong>#${number}</strong> was drawn as the winner of the Guns Garin Memorial Foundation Help Our Heroes 50/50.</p>
-      <div style="background:#0e2a52;color:#ffffff;padding:20px;text-align:center;border-radius:8px;">
-        <div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#e3b85a;">Your winnings</div>
+      <div style="background:#16375f;color:#ffffff;padding:20px;text-align:center;border-radius:8px;border:2px solid #2077c8;">
+        <div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#7cc0f4;">Your winnings</div>
         <div style="font-size:38px;font-weight:900;margin-top:4px;">${money(payoutCents)}</div>
         <div style="font-size:13px;color:#aeb9c9;margin-top:4px;">Half of the ${money(potCents)} pot</div>
       </div>
       <p style="margin:22px 0 0;font-size:16px;line-height:1.6;color:#3c4858;"><strong>We will call you within the next 24 hours</strong> to arrange how you would like your winnings sent to you. Thank you for supporting our military and veteran families.</p>
     </div>
-    <div style="background:#0e2a52;color:#aeb9c9;padding:18px 28px;text-align:center;font-size:12px;">Guns Garin Memorial Foundation &middot; Honor their sacrifice. Change their story.</div>
+    <div style="background:#16375f;color:#aeb9c9;padding:18px 28px;text-align:center;font-size:12px;">Guns Garin Memorial Foundation &middot; Honor their sacrifice. Change their story.</div>
   </div></body></html>`;
 }
 

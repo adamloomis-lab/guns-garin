@@ -169,6 +169,7 @@ export default function Raffle() {
 
         {/* Header */}
         <div className="text-center">
+          <img src="/images/footerlogo.png" alt="Guns Garin Memorial Foundation" className="mx-auto mb-3 h-16 w-auto" />
           <div className="text-[11px] font-bold uppercase tracking-[0.24em] text-white/80">Guns Garin Memorial Foundation</div>
           <h1 className="mt-2 font-black leading-none text-white" style={{ fontSize: '48px', textShadow: '0 2px 24px rgba(227,184,90,0.25)' }}>
             <span className="text-[var(--color-gold-soft)]">50/50</span> Raffle

@@ -34,25 +34,25 @@ async function counts() {
 
 function confirmationEmail({ name, numbers, potCents }) {
   const first = (name || "").trim().split(/\s+/)[0] || "friend";
-  const chips = numbers.map((n) => `<span style="display:inline-block;background:#0e2a52;color:#e3b85a;border:1px solid #c0902f;border-radius:6px;padding:8px 12px;margin:0 8px 8px 0;font-size:18px;font-weight:800;letter-spacing:.02em;">#${n}</span>`).join("");
+  const chips = numbers.map((n) => `<span style="display:inline-block;background:#16375f;color:#ffffff;border:2px solid #2077c8;border-radius:6px;padding:8px 12px;margin:0 8px 8px 0;font-size:18px;font-weight:800;letter-spacing:.02em;">#${n}</span>`).join("");
   return `<!doctype html><html><body style="margin:0;background:#eef1f5;font-family:'Segoe UI',Helvetica,Arial,sans-serif;color:#14202f;">
   <div style="max-width:600px;margin:0 auto;background:#ffffff;">
-    <div style="background:#0e2a52;padding:26px 28px;text-align:center;border-bottom:4px solid #c0902f;">
-      <div style="color:#ffffff;font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;">Guns Garin Memorial Foundation</div>
-      <div style="color:#e3b85a;font-size:30px;font-weight:900;letter-spacing:.04em;margin-top:6px;">Help Our Heroes 50/50</div>
+    <div style="background:#16375f;padding:26px 28px;text-align:center;border-bottom:4px solid #2077c8;">
+      <img src="https://gunsgarin.com/images/footerlogo.png" alt="Guns Garin Memorial Foundation" height="56" style="height:56px;display:block;margin:0 auto 10px;" />
+      <div style="color:#7cc0f4;font-size:30px;font-weight:900;letter-spacing:.04em;">Help Our Heroes 50/50</div>
     </div>
     <div style="padding:32px 28px;">
-      <h1 style="margin:0 0 6px;font-size:24px;color:#0e2a52;">You're in, ${esc(first)}. Thank you.</h1>
+      <h1 style="margin:0 0 6px;font-size:24px;color:#16375f;">You're in, ${esc(first)}. Thank you.</h1>
       <p style="margin:0 0 20px;font-size:16px;line-height:1.6;color:#3c4858;">Every ticket supports military and veteran families with rent, food, and emergency relief. Here ${numbers.length === 1 ? "is your ticket number" : "are your ticket numbers"}:</p>
       <div style="margin:0 0 22px;">${chips}</div>
-      <div style="background:#f4f5f7;border-left:4px solid #c0902f;padding:16px 18px;font-size:15px;line-height:1.7;color:#14202f;">
+      <div style="background:#f4f5f7;border-left:4px solid #2077c8;padding:16px 18px;font-size:15px;line-height:1.7;color:#14202f;">
         <strong>Drawing:</strong> ${DRAW_LABEL}<br/>
         <strong>Current pot:</strong> ${money(potCents)} &middot; winner takes half<br/>
         <strong>You do not have to be present to win.</strong> We announce the winner by email and follow up by phone.
       </div>
       <p style="margin:22px 0 0;font-size:14px;line-height:1.6;color:#5f6b7a;">Want better odds? More tickets, more chances. Reply to this email with any questions.</p>
     </div>
-    <div style="background:#0e2a52;color:#aeb9c9;padding:18px 28px;text-align:center;font-size:12px;line-height:1.6;">
+    <div style="background:#16375f;color:#aeb9c9;padding:18px 28px;text-align:center;font-size:12px;line-height:1.6;">
       Guns Garin Memorial Foundation &middot; Honor their sacrifice. Change their story.<br/>
       You are receiving this because you entered our 50/50 raffle. We may send occasional foundation updates; reply STOP to opt out.
     </div>

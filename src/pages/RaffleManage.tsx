@@ -61,6 +61,7 @@ export default function RaffleManage() {
     return (
       <section className="grid min-h-screen place-items-center bg-[var(--color-brand-ink)] px-4">
         <form onSubmit={load} className="w-full max-w-xs rounded-2xl bg-white p-6 shadow-xl">
+          <img src="/images/logo.png" alt="Guns Garin Memorial Foundation" className="mx-auto mb-3 h-14 w-auto" />
           <h1 className="text-center text-[18px] font-extrabold text-[var(--color-brand)]">50/50 Command Center</h1>
           <input type="password" value={pass} onChange={(e) => setPass(e.target.value)} placeholder="Passcode" className="mt-4 w-full rounded-xl border border-[var(--color-line)] px-4 py-3 text-[16px] outline-none focus:border-[var(--color-brand-bright)]" autoFocus />
           {err && <div className="mt-3 text-center text-[13px] font-semibold text-[var(--color-honor)]">{err}</div>}
