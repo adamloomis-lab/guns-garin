@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 const TICKET_PRICE = 5
+const GIVEBUTTER_URL = 'https://givebutter.com/5050-raffle-for-veterans-support-win-2026-aviation-expo-greenville-copy-tmx4jb'
 const money = (cents: number) => `$${(cents / 100).toLocaleString('en-US')}`
 
 interface Pot { potCents: number; tickets: number; entrants: number; drawn: boolean }
@@ -254,6 +255,16 @@ export default function Raffle() {
                   </button>
                 ))}
               </div>
+              {/* No QR handy? Pay online, then come back for numbers (new tab keeps the form filled). */}
+              <a
+                href={GIVEBUTTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2.5 flex items-center justify-center gap-1.5 rounded-xl bg-[var(--color-surface-soft)] px-4 py-3 text-[13px] font-bold text-[var(--color-brand-bright)] underline underline-offset-2"
+              >
+                Haven't paid yet? Pay securely on GiveButter →
+              </a>
+              <p className="mt-1.5 text-center text-[11px] text-[var(--color-muted)]">Opens in a new tab. Your info here stays put, come right back for your numbers.</p>
             </div>
 
             <label className="mt-6 flex items-start gap-2.5 text-[13px] leading-snug text-[var(--color-ink-soft)]">
