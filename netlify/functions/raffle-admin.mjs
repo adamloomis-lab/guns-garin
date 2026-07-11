@@ -68,6 +68,14 @@ export default async (req) => {
 
   if (d.action === "summary") return json(await summary());
 
+  // Wipe ALL campaign data (demo runs before launch). Requires confirm: "WIPE".
+  if (d.action === "reset") {
+    if (d.confirm !== "WIPE") return json({ error: 'Send confirm: "WIPE" to reset.' }, 400);
+    await fetch(`${SB}/rest/v1/raffle_draws?campaign=eq.${CAMPAIGN}`, { method: "DELETE", headers: H });
+    await fetch(`${SB}/rest/v1/raffle_entries?campaign=eq.${CAMPAIGN}`, { method: "DELETE", headers: H }); // tickets cascade
+    return json({ ok: true, reset: true });
+  }
+
   if (d.action === "export") {
     const rows = await rest(`raffle_entries?campaign=eq.${CAMPAIGN}&order=created_at.asc&select=name,email,phone,tickets,amount_cents,paid_by,email_opt_in,created_at`);
     const head = "name,email,phone,tickets,amount,paid_by,opt_in,entered_at";
