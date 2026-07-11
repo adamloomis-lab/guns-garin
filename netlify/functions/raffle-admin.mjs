@@ -40,7 +40,7 @@ function winnerEmail({ name, number, potCents, payoutCents }) {
   return `<!doctype html><html><body style="margin:0;background:#eef1f5;font-family:'Segoe UI',Helvetica,Arial,sans-serif;color:#14202f;">
   <div style="max-width:600px;margin:0 auto;background:#ffffff;">
     <div style="background:#16375f;padding:26px 28px;text-align:center;border-bottom:4px solid #2077c8;">
-      <img src="https://gunsgarin.com/images/footerlogo.png" alt="Guns Garin Memorial Foundation" height="56" style="height:56px;display:block;margin:0 auto 10px;" />
+      <img src="https://gunsgarin.com/images/footerlogo.png" alt="Guns Garin Memorial Foundation" width="117" height="64" style="width:117px;height:64px;display:block;margin:0 auto 10px;" />
       <div style="color:#7cc0f4;font-size:30px;font-weight:900;">You Won the 50/50!</div>
     </div>
     <div style="padding:32px 28px;">
