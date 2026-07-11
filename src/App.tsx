@@ -18,6 +18,8 @@ import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import Accessibility from './pages/Accessibility'
+import Raffle from './pages/Raffle'
+import RaffleManage from './pages/RaffleManage'
 import NotFound from './pages/NotFound'
 import CookieBanner from './components/CookieBanner'
 import GolfPopup from './components/GolfPopup'
@@ -65,7 +67,12 @@ function Shell() {
 export default function App({ ssrPath }: { readonly ssrPath?: string }) {
   return (
     <Router ssrPath={ssrPath}>
-      <Shell />
+      <Switch>
+        {/* Standalone 50/50 event tools: no site chrome, reached by QR / direct link. */}
+        <Route path="/5050" component={Raffle} />
+        <Route path="/5050/manage" component={RaffleManage} />
+        <Route><Shell /></Route>
+      </Switch>
     </Router>
   )
 }
