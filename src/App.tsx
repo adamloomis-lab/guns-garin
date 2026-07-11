@@ -20,6 +20,7 @@ import Terms from './pages/Terms'
 import Accessibility from './pages/Accessibility'
 import Raffle from './pages/Raffle'
 import RaffleManage from './pages/RaffleManage'
+import RaffleLive from './pages/RaffleLive'
 import NotFound from './pages/NotFound'
 import CookieBanner from './components/CookieBanner'
 import GolfPopup from './components/GolfPopup'
@@ -71,6 +72,7 @@ export default function App({ ssrPath }: { readonly ssrPath?: string }) {
         {/* Standalone 50/50 event tools: no site chrome, reached by QR / direct link. */}
         <Route path="/5050" component={Raffle} />
         <Route path="/5050/manage" component={RaffleManage} />
+        <Route path="/5050/live" component={RaffleLive} />
         <Route><Shell /></Route>
       </Switch>
     </Router>
