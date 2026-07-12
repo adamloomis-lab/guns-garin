@@ -255,16 +255,20 @@ export default function Raffle() {
                   </button>
                 ))}
               </div>
-              {/* No QR handy? Pay online, then come back for numbers (new tab keeps the form filled). */}
-              <a
-                href={GIVEBUTTER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2.5 flex items-center justify-center gap-1.5 rounded-xl bg-[var(--color-surface-soft)] px-4 py-3 text-[13px] font-bold text-[var(--color-brand-bright)] underline underline-offset-2"
-              >
-                Haven't paid yet? Pay securely on GiveButter →
-              </a>
-              <p className="mt-1.5 text-center text-[11px] text-[var(--color-muted)]">Opens in a new tab. Your info here stays put, come right back for your numbers.</p>
+              {/* Card payment happens right here: the GiveButter widget mounts
+                  inline when they pick QR / Card. Cash flow is untouched. */}
+              {paidBy === 'givebutter' && (
+                <div className="mt-3 overflow-hidden rounded-xl border-2 border-[var(--color-brand-bright)]/40 bg-[var(--color-surface-soft)]">
+                  <div className="bg-[var(--color-brand)] px-4 py-2.5 text-center text-[12px] font-bold uppercase tracking-[0.1em] text-white">
+                    Haven't paid yet? Pay right here, ${qty * TICKET_PRICE} for {qty} ticket{qty === 1 ? '' : 's'}
+                  </div>
+                  <div className="p-3" dangerouslySetInnerHTML={{ __html: '<givebutter-widget id="paXny4"></givebutter-widget>' }} />
+                  <p className="px-4 pb-3 text-center text-[11px] leading-snug text-[var(--color-muted)]">
+                    Already paid by QR or card? Skip this and submit below.{' '}
+                    <a href={GIVEBUTTER_URL} target="_blank" rel="noopener noreferrer" className="underline">Prefer a separate tab?</a>
+                  </p>
+                </div>
+              )}
             </div>
 
             <label className="mt-6 flex items-start gap-2.5 text-[13px] leading-snug text-[var(--color-ink-soft)]">
