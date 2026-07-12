@@ -262,7 +262,16 @@ export default function Raffle() {
                   <div className="bg-[var(--color-brand)] px-4 py-2.5 text-center text-[12px] font-bold uppercase tracking-[0.1em] text-white">
                     Haven't paid yet? Pay right here, ${qty * TICKET_PRICE} for {qty} ticket{qty === 1 ? '' : 's'}
                   </div>
-                  <div className="p-3" dangerouslySetInnerHTML={{ __html: '<givebutter-widget id="paXny4"></givebutter-widget>' }} />
+                  {/* Same-origin iframe of a static page hosting the widget: the
+                      GiveButter embed re-initializes on host-page mutations, so it
+                      never sizes correctly inside this live-updating app. */}
+                  <iframe
+                    src="/5050-pay.html"
+                    title="Pay by card, powered by GiveButter"
+                    allow="payment *"
+                    className="block w-full border-0"
+                    style={{ height: 700 }}
+                  />
                   <p className="px-4 pb-3 text-center text-[11px] leading-snug text-[var(--color-muted)]">
                     Already paid by QR or card? Skip this and submit below.{' '}
                     <a href={GIVEBUTTER_URL} target="_blank" rel="noopener noreferrer" className="underline">Prefer a separate tab?</a>
