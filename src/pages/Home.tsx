@@ -219,14 +219,14 @@ export default function Home() {
           <div className="overflow-hidden rounded-2xl depth-ink text-white reveal-scale">
             <div className="grid items-center gap-8 p-10 md:grid-cols-2 md:p-14">
               <div>
-                <span className="eyebrow">Play for a Purpose</span>
-                <h2 className="h-section mt-3 text-white">The 2026 Golf Series</h2>
+                <span className="eyebrow">Coming Soon</span>
+                <h2 className="h-section mt-3 text-white">Golf tournament heading to Texas</h2>
                 <p className="mt-5 text-white/85">
-                  Multiple tournaments. One mission. Join us on the course to support veterans and
-                  military families in crisis. The Ohio tournament tees off July 13, 2026.
+                  Our next Guns Garin Memorial Golf Tournament is heading to Texas. Details are on
+                  the way — join our email list to be the first to know when registration opens.
                 </p>
                 <Link href="/golf-tournament" className="btn btn-gold mt-7">
-                  Tournament Details <ArrowRight size={18} />
+                  Join the List <ArrowRight size={18} />
                 </Link>
               </div>
               <img

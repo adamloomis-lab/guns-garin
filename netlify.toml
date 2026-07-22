@@ -9,6 +9,20 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
+# Ohio tournament page was retired — send anyone with an old link (or the
+# GiveButter register URL that lived at /ohio) to the current golf tournament
+# page. Netlify processes _redirects rules in order, so this must come before
+# the SPA fallback below.
+[[redirects]]
+  from = "/ohio"
+  to = "/golf-tournament"
+  status = 301
+
+[[redirects]]
+  from = "/ohio/*"
+  to = "/golf-tournament"
+  status = 301
+
 # Prerendered per-route HTML is served directly (Netlify serves existing files
 # before applying this fallback). The fallback only catches client-side routes
 # that have no prerendered file.

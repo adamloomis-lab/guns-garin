@@ -24,7 +24,12 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet" />
-<div id="root"></div>
+<!-- Hidden static forms so Netlify's build-time bot detects the Netlify Forms. -->
+    <form name="newsletter" netlify netlify-honeypot="bot-field" hidden>
+      <input type="email" name="email" />
+      <input type="text" name="context" />
+    </form>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

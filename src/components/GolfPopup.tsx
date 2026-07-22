@@ -1,28 +1,27 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'wouter'
 import { AnimatePresence, motion } from 'motion/react'
-import { X, Trophy, CalendarDays, MapPin } from 'lucide-react'
+import { X, Mail, Trophy, ArrowRight } from 'lucide-react'
 
-// One-time golf-tournament promo. Appears ~4s after the visitor lands on any
-// page except /ohio + /golf-tournament. Dismissal is persisted to localStorage
-// so it won't pester returning visitors. Bump the KEY to re-open it next year.
-const KEY = 'gg-golf-popup-dismissed-2026'
+// One-time golf-tournament teaser. Appears ~4s after the visitor lands on any
+// page except /golf-tournament (already promoting it). Dismissal is persisted
+// to localStorage so it won't pester returning visitors. Bump the KEY when the
+// message changes so the popup can re-open for prior visitors.
+const KEY = 'gg-golf-popup-dismissed-texas-teaser'
 const DELAY_MS = 4000
 
 export default function GolfPopup() {
   const [open, setOpen] = useState(false)
   const [location] = useLocation()
 
-  // Auto-open once per visitor, never on pages that already promote the event.
   useEffect(() => {
     if (typeof window === 'undefined') return
-    if (location === '/ohio' || location === '/golf-tournament') return
+    if (location === '/golf-tournament') return
     if (localStorage.getItem(KEY)) return
     const t = setTimeout(() => setOpen(true), DELAY_MS)
     return () => clearTimeout(t)
   }, [location])
 
-  // Close + remember.
   const close = () => {
     try {
       localStorage.setItem(KEY, '1')
@@ -32,7 +31,6 @@ export default function GolfPopup() {
     setOpen(false)
   }
 
-  // Esc to close.
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
@@ -52,7 +50,6 @@ export default function GolfPopup() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
         >
-          {/* Backdrop */}
           <button
             type="button"
             aria-label="Close popup"
@@ -60,11 +57,10 @@ export default function GolfPopup() {
             className="absolute inset-0 bg-[var(--color-brand-ink)]/70 backdrop-blur-sm"
           />
 
-          {/* Card */}
           <motion.div
             role="dialog"
             aria-modal="true"
-            aria-label="2026 Ohio GGMF Golf Tournament"
+            aria-label="GGMF golf tournament heading to Texas"
             className="relative w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-[0_0_80px_rgba(8,27,56,0.45)]"
             initial={{ y: 30, opacity: 0, scale: 0.97 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
@@ -80,7 +76,6 @@ export default function GolfPopup() {
               <X size={18} />
             </button>
 
-            {/* Image header */}
             <div className="relative h-44 overflow-hidden sm:h-52">
               <img
                 src="/images/golf-carts.webp"
@@ -98,37 +93,26 @@ export default function GolfPopup() {
               />
               <div className="absolute inset-x-0 bottom-0 p-5">
                 <span className="font-display inline-flex items-center gap-2 rounded-full bg-[var(--color-gold)] px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-[#1a1303]">
-                  <Trophy size={13} /> Play with PGA Tour pro Michael Thompson
+                  <Trophy size={13} /> Coming to Texas
                 </span>
               </div>
             </div>
 
-            {/* Body */}
             <div className="p-6 sm:p-7">
               <h2 className="font-display text-2xl font-semibold uppercase tracking-wide text-ink sm:text-3xl">
-                2026 Ohio GGMF Golf Tournament
+                Our next golf tournament is coming to Texas
               </h2>
-              <ul className="mt-4 space-y-2 text-ink-soft">
-                <li className="flex items-center gap-2">
-                  <CalendarDays size={17} className="text-brand" /> Monday, July 13, 2026
-                </li>
-                <li className="flex items-center gap-2">
-                  <MapPin size={17} className="text-brand" /> Turkeyfoot Lake Golf Links, Akron OH
-                </li>
-              </ul>
-              <p className="mt-3 text-sm font-medium text-brand">
-                $120 per player · $480 per foursome
-              </p>
-              <p className="mt-1 text-sm text-muted">
-                97¢ of every dollar raised goes directly to veterans and their families.
+              <p className="mt-4 text-ink-soft">
+                Details will be announced soon. Stay tuned to our email list — we’ll send out more
+                information as details become available.
               </p>
 
               <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row">
                 <button type="button" onClick={close} className="btn btn-outline sm:flex-1">
                   Maybe later
                 </button>
-                <Link href="/ohio" onClick={close} className="btn btn-gold sm:flex-1">
-                  <Trophy size={18} /> Register Now
+                <Link href="/golf-tournament" onClick={close} className="btn btn-gold sm:flex-1">
+                  <Mail size={17} /> Join the Email List <ArrowRight size={16} />
                 </Link>
               </div>
             </div>

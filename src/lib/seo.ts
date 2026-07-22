@@ -1,4 +1,4 @@
-import { org, faqs, golf } from '../data/site'
+import { org, faqs } from '../data/site'
 
 // Production target domain. Canonicals, sitemap, OG and schema all point here so
 // SEO value lands on the live host the moment DNS flips from the old Duda site.
@@ -68,53 +68,6 @@ function faqSchema() {
   }
 }
 
-function golfEventSchema() {
-  return golf.events
-    .filter((e) => e.status === 'open')
-    .map((e) => ({
-      '@context': 'https://schema.org',
-      '@type': 'Event',
-      name: e.name,
-      startDate: '2026-07-13',
-      eventStatus: 'https://schema.org/EventScheduled',
-      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-      location: { '@type': 'Place', name: e.location, address: { '@type': 'PostalAddress', addressRegion: 'OH', addressCountry: 'US' } },
-      organizer: { '@id': `${SITE_URL}/#org` },
-      description: 'Annual charity golf tournament benefiting veterans and military families in crisis.',
-      url: e.registerUrl || pageUrl('/golf-tournament'),
-    }))
-}
-
-function ohioEventSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Event',
-    name: '2026 Ohio GGMF Golf Tournament',
-    startDate: '2026-07-13T08:00:00-04:00',
-    eventStatus: 'https://schema.org/EventScheduled',
-    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-    location: {
-      '@type': 'Place',
-      name: 'Turkeyfoot Lake Golf Links',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Akron',
-        addressRegion: 'OH',
-        addressCountry: 'US',
-      },
-    },
-    organizer: { '@id': `${SITE_URL}/#org` },
-    description:
-      'The first-ever Ohio GGMF Golf Tournament, hosted by PGA Tour Pro Michael Thompson, benefiting veterans and military families in crisis.',
-    offers: [
-      { '@type': 'Offer', name: 'Individual Golfer', price: '120', priceCurrency: 'USD', url: org.give.golfOhio },
-      { '@type': 'Offer', name: 'Foursome', price: '480', priceCurrency: 'USD', url: org.give.golfOhio },
-    ],
-    performer: { '@type': 'Person', name: 'Michael Thompson' },
-    url: pageUrl('/ohio'),
-  }
-}
-
 function donateActionSchema() {
   return {
     '@context': 'https://schema.org',
@@ -179,32 +132,14 @@ export function getPageMeta(rawPath: string): PageMeta {
       }
     case '/golf-tournament':
       return {
-        title: 'Annual Golf Tournament | Play for a Purpose | Guns Garin Memorial Foundation',
+        title: 'Golf Tournament | Coming to Texas | Guns Garin Memorial Foundation',
         description:
-          'Join the 2026 Guns Garin Memorial Foundation Golf Series. The Ohio tournament tees off July 13, 2026. Multiple tournaments, one mission: supporting veterans in crisis.',
+          'The next Guns Garin Memorial Golf Tournament is heading to Texas. Details coming soon — join our email list to be the first to know.',
         canonical: pageUrl('/golf-tournament'),
         ogImage,
         jsonLd: [
           base,
-          ...golfEventSchema(),
           breadcrumb([{ name: 'Home', path: '/' }, { name: 'Golf Tournament', path: '/golf-tournament' }]),
-        ],
-      }
-    case '/ohio':
-      return {
-        title: '2026 Ohio GGMF Golf Tournament | Play with PGA Pro Michael Thompson',
-        description:
-          'Join the first-ever Ohio GGMF Golf Tournament. Monday, July 13, 2026 at Turkeyfoot Lake Golf Links, Akron. Hosted by PGA Tour Pro Michael Thompson. $120/golfer, $480/foursome, sponsorships available. 97¢ of every dollar goes to veterans.',
-        canonical: pageUrl('/ohio'),
-        ogImage,
-        jsonLd: [
-          base,
-          ohioEventSchema(),
-          breadcrumb([
-            { name: 'Home', path: '/' },
-            { name: 'Golf Tournament', path: '/golf-tournament' },
-            { name: 'Ohio', path: '/ohio' },
-          ]),
         ],
       }
     case '/aviation-events':
@@ -308,7 +243,6 @@ export const ALL_ROUTES: string[] = [
   '/about',
   '/impact',
   '/golf-tournament',
-  '/ohio',
   '/aviation-events',
   '/flight-crew',
   '/donate',

@@ -135,27 +135,9 @@ export const partners = [
 ] as const
 
 export const golf = {
-  seriesYear: 2026,
   intro:
-    'Multiple tournaments. One mission. Supporting veterans and military families in crisis.',
+    'The next Guns Garin Memorial Golf Tournament is heading to Texas. Details will be announced soon — join our email list to be the first to know.',
   host: 'Hosted by PGA Tour player Michael Thompson',
-  events: [
-    {
-      name: '2026 Ohio GGMF Golf Tournament',
-      date: 'July 13, 2026',
-      location: 'Turkeyfoot Lake Golf Links, Akron, OH',
-      status: 'open' as const,
-      detailsPath: '/ohio',
-      registerUrl: 'https://givebutter.com/ggmf-ohio-golf-tournament-july-13-2026-nix7as',
-    },
-    {
-      name: '2026 Las Vegas Tournament',
-      date: 'Dates coming soon',
-      location: 'Las Vegas, NV',
-      status: 'soon' as const,
-      registerUrl: '',
-    },
-  ],
 } as const
 
 export const faqs = [

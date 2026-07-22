@@ -266,8 +266,8 @@ export default function About() {
                 ),
               )}
             </ul>
-            <Link href="/ohio" className="btn btn-gold mt-8">
-              <Trophy size={18} /> Play in the 2026 Tournament
+            <Link href="/golf-tournament" className="btn btn-gold mt-8">
+              <Trophy size={18} /> Next Tournament — Coming Soon
             </Link>
           </div>
         </div>

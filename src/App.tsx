@@ -10,7 +10,6 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Impact from './pages/Impact'
 import GolfTournament from './pages/GolfTournament'
-import Ohio from './pages/Ohio'
 import AviationEvents from './pages/AviationEvents'
 import FlightCrew from './pages/FlightCrew'
 import Donate from './pages/Donate'
@@ -46,7 +45,6 @@ function Shell() {
           <Route path="/about" component={About} />
           <Route path="/impact" component={Impact} />
           <Route path="/golf-tournament" component={GolfTournament} />
-          <Route path="/ohio" component={Ohio} />
           <Route path="/aviation-events" component={AviationEvents} />
           <Route path="/flight-crew" component={FlightCrew} />
           <Route path="/donate" component={Donate} />
