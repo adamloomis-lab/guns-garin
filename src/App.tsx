@@ -14,6 +14,8 @@ import AviationEvents from './pages/AviationEvents'
 import FlightCrew from './pages/FlightCrew'
 import Donate from './pages/Donate'
 import Contact from './pages/Contact'
+import ApplyForAid from './pages/ApplyForAid'
+import FlightScholarship from './pages/FlightScholarship'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import Accessibility from './pages/Accessibility'
@@ -48,6 +50,8 @@ function Shell() {
           <Route path="/aviation-events" component={AviationEvents} />
           <Route path="/flight-crew" component={FlightCrew} />
           <Route path="/donate" component={Donate} />
+          <Route path="/apply-for-aid" component={ApplyForAid} />
+          <Route path="/flight-scholarship" component={FlightScholarship} />
           <Route path="/contact" component={Contact} />
           <Route path="/privacy" component={Privacy} />
           <Route path="/terms" component={Terms} />

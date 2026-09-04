@@ -12,6 +12,7 @@ const links = [
   { href: '/golf-tournament', label: 'Golf' },
   { href: '/aviation-events', label: 'Aviation Events' },
   { href: '/flight-crew', label: 'Flight Crew' },
+  { href: '/apply-for-aid', label: 'Apply for Aid' },
   { href: '/contact', label: 'Contact' },
 ]
 

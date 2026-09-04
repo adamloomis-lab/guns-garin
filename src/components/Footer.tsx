@@ -8,6 +8,8 @@ const explore = [
   { href: '/golf-tournament', label: 'Golf Tournament' },
   { href: '/flight-crew', label: 'Flight Crew' },
   { href: '/donate', label: 'Donate' },
+  { href: '/apply-for-aid', label: 'Apply for Aid' },
+  { href: '/flight-scholarship', label: 'Flight Scholarship' },
   { href: '/contact', label: 'Contact' },
 ]
 

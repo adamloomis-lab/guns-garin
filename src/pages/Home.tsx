@@ -200,6 +200,15 @@ export default function Home() {
                         </li>
                       ))}
                     </ul>
+                    {'cta' in p && p.cta && (
+                      <Link
+                        href={p.cta.href}
+                        className="font-display mt-6 inline-flex items-center gap-1.5 self-start text-sm font-semibold uppercase tracking-wide text-brand transition-colors hover:text-[var(--color-gold)]"
+                      >
+                        {p.cta.label}
+                        <ArrowRight size={16} />
+                      </Link>
+                    )}
                   </div>
                 </article>
               )

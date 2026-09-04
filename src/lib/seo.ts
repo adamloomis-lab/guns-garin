@@ -184,6 +184,33 @@ export function getPageMeta(rawPath: string): PageMeta {
           breadcrumb([{ name: 'Home', path: '/' }, { name: 'Donate', path: '/donate' }]),
         ],
       }
+    case '/apply-for-aid':
+      return {
+        title: 'Apply for Aid | Veteran Family Relief | Guns Garin Memorial Foundation',
+        description:
+          'Apply for Veteran Family Relief & Assistance from the Guns Garin Memorial Foundation. We review every request, with priority given to families who live in or have a direct connection to South Carolina.',
+        canonical: pageUrl('/apply-for-aid'),
+        ogImage,
+        jsonLd: [
+          base,
+          breadcrumb([{ name: 'Home', path: '/' }, { name: 'Apply for Aid', path: '/apply-for-aid' }]),
+        ],
+      }
+    case '/flight-scholarship':
+      return {
+        title: 'Flight Scholarship Application | Guns Garin Memorial Foundation',
+        description:
+          'Apply for a Guns Garin Memorial Foundation flight scholarship. Open to young pilots ages 15 to 25 who are training toward a Private Pilot License and a career in aviation.',
+        canonical: pageUrl('/flight-scholarship'),
+        ogImage,
+        jsonLd: [
+          base,
+          breadcrumb([
+            { name: 'Home', path: '/' },
+            { name: 'Flight Scholarship', path: '/flight-scholarship' },
+          ]),
+        ],
+      }
     case '/contact':
       return {
         title: 'Contact Us | Guns Garin Memorial Foundation',
@@ -246,6 +273,8 @@ export const ALL_ROUTES: string[] = [
   '/aviation-events',
   '/flight-crew',
   '/donate',
+  '/apply-for-aid',
+  '/flight-scholarship',
   '/contact',
   '/privacy',
   '/terms',

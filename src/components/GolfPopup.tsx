@@ -10,13 +10,17 @@ import { X, Mail, Trophy, ArrowRight } from 'lucide-react'
 const KEY = 'gg-golf-popup-dismissed-texas-teaser'
 const DELAY_MS = 4000
 
+const SUPPRESSED = ['/golf-tournament', '/apply-for-aid', '/flight-scholarship']
+
 export default function GolfPopup() {
   const [open, setOpen] = useState(false)
   const [location] = useLocation()
 
   useEffect(() => {
     if (typeof window === 'undefined') return
-    if (location === '/golf-tournament') return
+    // Never interrupt someone mid-application: a family writing up a hardship,
+    // or a student writing a scholarship essay, does not need a golf promo.
+    if (SUPPRESSED.includes(location)) return
     if (localStorage.getItem(KEY)) return
     const t = setTimeout(() => setOpen(true), DELAY_MS)
     return () => clearTimeout(t)

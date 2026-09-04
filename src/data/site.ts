@@ -1,8 +1,8 @@
 // Single source of truth for foundation facts, used across pages, footer, and
 // JSON-LD schema. Pulled from the live Guns Garin Memorial Foundation (Duda) site.
-// Scholarship / grant programs intentionally omitted — the foundation is not
-// offering those right now. The "future aviators" mission is kept via the free
-// E3 Aviation educational-content partnership only.
+// The aid and flight-scholarship applications were restored in Sept 2026 from the
+// foundation's previous Gravity Forms versions; their copy and field options live
+// in `aidForm` and `scholarshipForm` at the bottom of this file.
 
 export const org = {
   name: 'Guns Garin Memorial Foundation',
@@ -60,6 +60,7 @@ export const programs = [
       '350+ families supported since 2020',
       '100% of donations directed to veterans',
     ],
+    cta: { href: '/apply-for-aid', label: 'Apply for aid' },
   },
   {
     id: 'future-aviators',
@@ -72,6 +73,7 @@ export const programs = [
       'Powered by our E3 Aviation partnership',
       'Open to aspiring pilots nationwide',
     ],
+    cta: { href: '/flight-scholarship', label: 'Apply for a flight scholarship' },
   },
   {
     id: 'mental-health',
@@ -162,3 +164,67 @@ export const faqs = [
     a: 'Yes. You can mail a gift to Guns Garin Memorial Foundation, 4611 Hard Scrabble Rd, Ste 109 #108, Columbia, SC 29229.',
   },
 ] as const
+
+// States list carried over from the foundation's own scholarship form. The
+// Armed Forces entries at the end are what let overseas military families
+// apply, so keep them.
+export const usStates = [
+  'Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California',
+  'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida',
+  'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas',
+  'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan',
+  'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada',
+  'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina',
+  'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon',
+  'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina',
+  'South Dakota', 'Tennessee', 'Texas', 'Utah', 'U.S. Virgin Islands',
+  'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming',
+  'Armed Forces Americas', 'Armed Forces Europe', 'Armed Forces Pacific',
+] as const
+
+// Veteran Family Relief & Assistance application. Copy and options restored
+// from the foundation's previous form; the South Carolina priority notice is
+// the statement the foundation supplied in September 2026.
+export const aidForm = {
+  intro:
+    'We are committed to supporting veterans and their families in their time of unexpected hardship. Fill out the application below and we will review your submission as soon as we can.',
+  scNotice: {
+    heading: 'A note on where we can help right now',
+    paragraphs: [
+      'As we continue to grow our ability to serve military members, veterans, and their families, our primary focus at this time is providing aid to those who live in or have a direct connection to South Carolina.',
+      'We welcome all requests and will thoughtfully review each one. However, please understand that priority will be given to South Carolina individuals and families as we work to make the greatest impact possible with the resources currently available to us.',
+      'Thank you for trusting GGMF with your story and allowing us the opportunity to consider how we may be able to help.',
+    ],
+  },
+  veteranStatus: ['Active', 'Retired', 'Reserves', 'National Guard', 'Other'] as const,
+  scConnection: [
+    'I live in South Carolina',
+    'I have a direct connection to South Carolina',
+    'Neither of these',
+  ] as const,
+  emailHint:
+    'Please provide your primary email address. This will be our main way to communicate with you about important updates and information. Make sure it’s one you check regularly.',
+  helpHint:
+    'Please provide details about your recent unexpected hardship and how we could support you and your family financially.',
+} as const
+
+// Flight scholarship application. Field set and prompts restored from the
+// foundation's previous form. TODO: confirm with the foundation that the
+// partner schools, the award amount, and the 15–25 age range still stand
+// before this page is indexed.
+export const scholarshipForm = {
+  intro:
+    'We are committed to supporting and empowering the next generation of great pilots. Tell us about your flying so far and where you want it to take you.',
+  requirements: [
+    'Applicants must be actively taking flying lessons toward a Private Pilot License and beyond.',
+    'Applicants with no flight time but a strong desire to begin flight training are considered case by case.',
+    'Scholarship recipients must be between 15 and 25 years old.',
+  ],
+  ageHint: 'Scholarship recipients must be between 15 and 25 years old.',
+  prompts: {
+    help: 'How would a Flight Scholarship from GGMF help you in your pursuit of a career in aviation?',
+    why: 'Tell us why you are interested in the aviation industry.',
+    essay:
+      'Please write an essay (minimum 300 words) explaining your desire and plan for success in life and the field of aviation.',
+  },
+} as const
