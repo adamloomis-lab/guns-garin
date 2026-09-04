@@ -19,6 +19,27 @@ interface FloatFieldProps {
   max?: number
   inputMode?: 'text' | 'numeric' | 'decimal' | 'tel' | 'email'
   hint?: string
+  question?: string
+}
+
+// A `question` turns off the floating label and puts the full question on its
+// own line above the control. Long questions cannot ride inside the box: at
+// 10px uppercase they run past the field on a phone and push the page sideways.
+function QuestionLabel({
+  htmlFor,
+  children,
+  required,
+}: {
+  readonly htmlFor: string
+  readonly children: React.ReactNode
+  readonly required?: boolean
+}) {
+  return (
+    <label htmlFor={htmlFor} className="mb-2 block font-body text-[15px] leading-snug text-ink">
+      {children}
+      {required && <span className="ml-1 text-[var(--color-gold)]">*</span>}
+    </label>
+  )
 }
 
 export function FloatField({
@@ -36,6 +57,7 @@ export function FloatField({
   max,
   inputMode,
   hint,
+  question,
 }: FloatFieldProps) {
   const id = `${idPrefix}-${name}`
   const input =
@@ -44,8 +66,18 @@ export function FloatField({
     'pointer-events-none absolute left-4 top-4 origin-left font-body text-base text-muted transition-all duration-200 ' +
     'peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-semibold peer-focus:uppercase peer-focus:tracking-[0.16em] peer-focus:text-brand ' +
     'peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:uppercase peer-[:not(:placeholder-shown)]:tracking-[0.16em] peer-[:not(:placeholder-shown)]:text-ink-soft'
+  // With a question above, the control drops the reserved top gutter the
+  // floating label needs and shows the label text as a placeholder instead.
+  const boxed = question
+    ? 'peer w-full bg-transparent px-4 py-3.5 font-body text-base text-ink outline-none'
+    : input
   return (
     <div>
+      {question && (
+        <QuestionLabel htmlFor={id} required={required}>
+          {question}
+        </QuestionLabel>
+      )}
       <div className="group relative rounded-md border border-line bg-white transition-all duration-300 focus-within:border-[var(--color-gold)] focus-within:shadow-[0_12px_30px_-16px_rgba(192,144,47,0.55)]">
         {textarea ? (
           <textarea
@@ -53,11 +85,11 @@ export function FloatField({
             name={name}
             rows={rows}
             required={required}
-            placeholder=" "
+            placeholder={question ? label : ' '}
             value={value}
             onChange={onChange}
             aria-describedby={hint ? `${id}-hint` : undefined}
-            className={`${input} resize-none`}
+            className={`${boxed} resize-none`}
           />
         ) : (
           <input
@@ -69,17 +101,19 @@ export function FloatField({
             min={min}
             max={max}
             inputMode={inputMode}
-            placeholder=" "
+            placeholder={question ? label : ' '}
             value={value}
             onChange={onChange}
             aria-describedby={hint ? `${id}-hint` : undefined}
-            className={input}
+            className={boxed}
           />
         )}
-        <label htmlFor={id} className={labelCls}>
-          {label}
-          {required && <span className="ml-1 text-[var(--color-gold)]">*</span>}
-        </label>
+        {!question && (
+          <label htmlFor={id} className={labelCls}>
+            {label}
+            {required && <span className="ml-1 text-[var(--color-gold)]">*</span>}
+          </label>
+        )}
         <span
           aria-hidden="true"
           className="pointer-events-none absolute bottom-0 left-1/2 h-0.5 w-[calc(100%-2rem)] -translate-x-1/2 scale-x-0 bg-[var(--color-gold)] transition-transform duration-300 peer-focus:scale-x-100"
@@ -105,10 +139,12 @@ interface SelectFieldProps {
   autoComplete?: string
   idPrefix?: string
   hint?: string
+  question?: string
 }
 
 // Select styled to match FloatField. The label stays pinned small because a
-// select always shows either the placeholder option or a chosen value.
+// select always shows either the placeholder option or a chosen value. Pass a
+// `question` instead when the wording is too long to sit inside the box.
 export function SelectField({
   name,
   label,
@@ -120,20 +156,28 @@ export function SelectField({
   autoComplete,
   idPrefix = 'gg',
   hint,
+  question,
 }: SelectFieldProps) {
   const id = `${idPrefix}-${name}`
   return (
     <div>
+      {question && (
+        <QuestionLabel htmlFor={id} required={required}>
+          {question}
+        </QuestionLabel>
+      )}
       <div className="group relative rounded-md border border-line bg-white transition-all duration-300 focus-within:border-[var(--color-gold)] focus-within:shadow-[0_12px_30px_-16px_rgba(192,144,47,0.55)]">
-        <label
-          htmlFor={id}
-          className={`pointer-events-none absolute left-4 top-2 font-body text-[10px] font-semibold uppercase tracking-[0.16em] ${
-            value ? 'text-ink-soft' : 'text-muted'
-          }`}
-        >
-          {label}
-          {required && <span className="ml-1 text-[var(--color-gold)]">*</span>}
-        </label>
+        {!question && (
+          <label
+            htmlFor={id}
+            className={`pointer-events-none absolute left-4 top-2 font-body text-[10px] font-semibold uppercase tracking-[0.16em] ${
+              value ? 'text-ink-soft' : 'text-muted'
+            }`}
+          >
+            {label}
+            {required && <span className="ml-1 text-[var(--color-gold)]">*</span>}
+          </label>
+        )}
         <select
           id={id}
           name={name}
@@ -142,9 +186,9 @@ export function SelectField({
           onChange={onChange}
           autoComplete={autoComplete}
           aria-describedby={hint ? `${id}-hint` : undefined}
-          className={`peer w-full appearance-none bg-transparent px-4 pt-6 pb-2 pr-10 font-body text-base outline-none ${
-            value ? 'text-ink' : 'text-muted'
-          }`}
+          className={`peer w-full appearance-none bg-transparent pr-10 font-body text-base outline-none ${
+            question ? 'px-4 py-3.5' : 'px-4 pt-6 pb-2'
+          } ${value ? 'text-ink' : 'text-muted'}`}
         >
           <option value="">{placeholder}</option>
           {options.map((o) => (

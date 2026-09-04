@@ -196,7 +196,41 @@ export const aidForm = {
       'Thank you for trusting GGMF with your story and allowing us the opportunity to consider how we may be able to help.',
     ],
   },
-  veteranStatus: ['Active', 'Retired', 'Reserves', 'National Guard', 'Other'] as const,
+  // Replaced the old "Veteran Status" list (Active / Retired / Reserves /
+  // National Guard / Other), which had no way for a veteran, a military
+  // spouse, or a surviving family member to describe themselves.
+  branchOfService: [
+    'U.S. Army',
+    'U.S. Marine Corps',
+    'U.S. Navy',
+    'U.S. Air Force',
+    'U.S. Space Force',
+    'U.S. Coast Guard',
+    'National Guard',
+    'Reserves',
+    'Other',
+  ] as const,
+  militaryStatus: [
+    'Active Duty',
+    'Veteran',
+    'Retired',
+    'National Guard',
+    'Reserve',
+    'Military Spouse / Family Member',
+    'Surviving Spouse / Family Member',
+  ] as const,
+  scInstallations: [
+    'Fort Jackson',
+    'Shaw Air Force Base',
+    'Joint Base Charleston',
+    'Marine Corps Recruit Depot Parris Island',
+    'Marine Corps Air Station Beaufort',
+    'McEntire Joint National Guard Base',
+    'Naval Information Warfare Center Atlantic / Charleston',
+    'Other (please specify)',
+  ] as const,
+  dutyStationHint:
+    'Example: Fort Jackson, Shaw AFB, Joint Base Charleston, Camp Lejeune, USS Yorktown.',
   scConnection: [
     'I live in South Carolina',
     'I have a direct connection to South Carolina',

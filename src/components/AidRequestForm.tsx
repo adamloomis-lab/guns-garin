@@ -20,6 +20,9 @@ const emptyFields = {
   'address-2': '',
   city: '',
   zip: '',
+  'duty-station': '',
+  'base-city': '',
+  'sc-installation-other': '',
   message: '',
 }
 
@@ -47,8 +50,12 @@ export default function AidRequestForm() {
   const [firstName, setFirstName] = useState('')
   const [fields, setFields] = useState(emptyFields)
   const [state, setState] = useState('')
-  const [veteranStatus, setVeteranStatus] = useState('')
   const [scConnection, setScConnection] = useState('')
+  const [branch, setBranch] = useState('')
+  const [militaryStatus, setMilitaryStatus] = useState('')
+  const [baseState, setBaseState] = useState('')
+  const [servedInSc, setServedInSc] = useState('')
+  const [scInstallation, setScInstallation] = useState('')
   // Spam gate: a real applicant needs more than a few seconds to fill this in.
   const openedAt = useRef(0)
 
@@ -77,8 +84,12 @@ export default function AidRequestForm() {
       form.reset()
       setFields(emptyFields)
       setState('')
-      setVeteranStatus('')
       setScConnection('')
+      setBranch('')
+      setMilitaryStatus('')
+      setBaseState('')
+      setServedInSc('')
+      setScInstallation('')
     } catch {
       setStatus('error')
     }
@@ -140,14 +151,106 @@ export default function AidRequestForm() {
         />
       </div>
 
+      <SectionHeading>Your military service</SectionHeading>
+      {/* Both run full width: the longest status option ("Surviving Spouse /
+          Family Member") clips inside a half-width select on desktop. */}
       <div className="mt-4">
         <SelectField
-          name="veteran-status"
-          label="Veteran status"
-          value={veteranStatus}
-          onChange={(e) => setVeteranStatus(e.target.value)}
-          options={aidForm.veteranStatus}
+          name="branch"
+          label="Branch of service"
+          value={branch}
+          onChange={(e) => setBranch(e.target.value)}
+          options={aidForm.branchOfService}
           required
+          idPrefix="aid"
+        />
+      </div>
+      <div className="mt-4">
+        <SelectField
+          name="military-status"
+          label="Current military status"
+          value={militaryStatus}
+          onChange={(e) => setMilitaryStatus(e.target.value)}
+          options={aidForm.militaryStatus}
+          required
+          idPrefix="aid"
+        />
+      </div>
+      <div className="mt-5">
+        <FloatField
+          name="duty-station"
+          label="Base, installation, duty station, or unit"
+          question="Where are you currently serving, or where did you most recently serve?"
+          value={fields['duty-station']}
+          onChange={onField}
+          required
+          idPrefix="aid"
+          hint={aidForm.dutyStationHint}
+        />
+      </div>
+      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <FloatField
+          name="base-city"
+          label="Base city (optional)"
+          value={fields['base-city']}
+          onChange={onField}
+          idPrefix="aid"
+        />
+        <SelectField
+          name="base-state"
+          label="Base state (optional)"
+          value={baseState}
+          onChange={(e) => setBaseState(e.target.value)}
+          options={usStates}
+          idPrefix="aid"
+        />
+      </div>
+      <div className="mt-5">
+        <SelectField
+          name="served-in-sc"
+          label="Served in South Carolina"
+          question="Did you ever serve at a South Carolina military installation?"
+          value={servedInSc}
+          onChange={(e) => {
+            setServedInSc(e.target.value)
+            // Clear the follow-ups so a changed answer cannot leave a stale
+            // installation attached to a "No".
+            if (e.target.value !== 'Yes') {
+              setScInstallation('')
+              setFields((f) => ({ ...f, 'sc-installation-other': '' }))
+            }
+          }}
+          options={['Yes', 'No']}
+          required
+          idPrefix="aid"
+        />
+      </div>
+      {/* Kept in the DOM and hidden rather than unmounted: Netlify registers a
+          form's fields from the prerendered HTML, so a conditionally mounted
+          field would never appear in the submission schema. */}
+      <div className={servedInSc === 'Yes' ? 'mt-4' : 'hidden'}>
+        <SelectField
+          name="sc-installation"
+          label="South Carolina installation"
+          question="Which South Carolina installation or duty station?"
+          value={scInstallation}
+          onChange={(e) => setScInstallation(e.target.value)}
+          options={aidForm.scInstallations}
+          required={servedInSc === 'Yes'}
+          idPrefix="aid"
+        />
+      </div>
+      <div
+        className={
+          servedInSc === 'Yes' && scInstallation === 'Other (please specify)' ? 'mt-4' : 'hidden'
+        }
+      >
+        <FloatField
+          name="sc-installation-other"
+          label="Which installation or duty station?"
+          value={fields['sc-installation-other']}
+          onChange={onField}
+          required={servedInSc === 'Yes' && scInstallation === 'Other (please specify)'}
           idPrefix="aid"
         />
       </div>
