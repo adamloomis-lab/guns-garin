@@ -37,10 +37,11 @@ export default function ApplyForAid() {
             {/* The foundation's September 2026 statement on service area. It sits
                 above the form on purpose: applicants should read it before they
                 spend time telling us about the hardest week of their year. */}
-            <div className="rounded-lg border-l-4 border-[var(--color-gold)] bg-surface-soft p-6 sm:p-7">
+            <div className="rounded-lg border border-line bg-surface-soft p-6 sm:p-7">
               <h2 className="font-display text-xl font-semibold uppercase tracking-wide text-ink">
                 {aidForm.scNotice.heading}
               </h2>
+              <span className="gold-rule mt-4" />
               {aidForm.scNotice.paragraphs.map((p) => (
                 <p key={p.slice(0, 40)} className="mt-3 text-ink-soft">
                   {p}
